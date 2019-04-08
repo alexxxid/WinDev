@@ -83,12 +83,12 @@ class Adherent implements UserInterface
         $this->roles = $leRole;
     }
 
-    public function getId(): ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ? string
+    public function getNom(): ?string
     {
         return $this->nom;
     }
@@ -100,7 +100,7 @@ class Adherent implements UserInterface
         return $this;
     }
 
-    public function getPrenom(): ? string
+    public function getPrenom(): ?string
     {
         return $this->prenom;
     }
@@ -112,31 +112,31 @@ class Adherent implements UserInterface
         return $this;
     }
 
-    public function getAdresse(): ? string
+    public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
-    public function setAdresse(? string $adresse): self
+    public function setAdresse(?string $adresse): self
     {
         $this->adresse = $adresse;
 
         return $this;
     }
 
-    public function getCodeCommune(): ? string
+    public function getCodeCommune(): ?string
     {
         return $this->codeCommune;
     }
 
-    public function setCodeCommune(? string $codeCommune): self
+    public function setCodeCommune(?string $codeCommune): self
     {
         $this->codeCommune = $codeCommune;
 
         return $this;
     }
 
-    public function getMail(): ? string
+    public function getMail(): ?string
     {
         return $this->mail;
     }
@@ -148,19 +148,19 @@ class Adherent implements UserInterface
         return $this;
     }
 
-    public function getTelephone(): ? string
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(? string $telephone): self
+    public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
 
         return $this;
     }
 
-    public function getPassword(): ? string
+    public function getPassword(): ?string
     {
         return $this->password;
     }

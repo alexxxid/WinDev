@@ -23,19 +23,13 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *               }
  *          },
  *          collectionOperations={
- *              "get_coll_role_adherent"={
+ *              "get"={
  *                  "method"="GET",
- *                  "path" ="/adherent/livres",
+ *                  "path" ="/livres",
  *                  "normalization_context"={
  *                      "groups"={"get_role_adherent"}
  *                  }
  *                },
- *                "get_coll_role_manager"={
- *                    "method"="GET",
- *                    "path" ="/manager/livres",
- *                    "access_control"="is_granted('ROLE_MANAGER')",
- *                    "access_control_message"=" Vous n'avez pas les droits d'accéder à cette ressource"
- *                  },
  *                  "post"={
  *                    "method"="POST",
  *                    "access_control"="is_granted('ROLE_MANAGER')",
@@ -43,37 +37,25 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *                   }
  *            },
  *            itemOperations={
- *                "get_item_role_adherent"={
+ *                "get"={
  *                  "method"="GET",
- *                  "path" ="/adherent/livre/{id}",
+ *                  "path" ="/livre/{id}",
  *                  "normalization_context"={
  *                      "groups"={"get_role_adherent"}
  *                   }
- *                 },
- *                "get_item_role_manager"={
- *                    "method"="GET",
- *                    "path" ="/manager/livre/{id}",
- *                    "access_control"="is_granted('ROLE_MANAGER')",
- *                    "access_control_message"=" Vous n'avez pas les droits d'accéder à cette ressource"
  *                 },          
- *                "put_item_role_manager"={
+ *                "put"={
  *                  "method"="PUT",
- *                  "path" ="/manager/livre/{id}",
+ *                  "path" ="/livre/{id}",
  *                  "access_control"="is_granted('ROLE_MANAGER')",
  *                  "access_control_message"=" Vous n'avez pas les droits d'accéder à cette ressource",
  *                  "denormalization_context"= {
  *                      "groups"={"put_manager"}
  *                   }
  *                 },
- *                "put_item_role_admin"={
- *                 "method"="PUT",
- *                 "path" ="/admin/livre/{id}",
- *                 "access_control"="is_granted('ROLE_ADMIN')",
- *                 "access_control_message"=" Vous n'avez pas les droits d'accéder à cette ressource"
- *                                       },
  *                "delete"={
  *                 "method"="DELETE",
- *                 "path" ="/admin/livre/{id}",
+ *                 "path" ="/livre/{id}",
  *                 "access_control"="is_granted('ROLE_ADMIN')",
  *                 "access_control_message"=" Vous n'avez pas les droits d'accéder à cette ressource"
  *                 }   
@@ -124,6 +106,7 @@ class Livre
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @groups ({"get_role_manager","put_admin"})
      */
     private $prix;
 
@@ -163,6 +146,7 @@ class Livre
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Pret", mappedBy="livre")
+     * @groups ({"get_role_manager"})
      */
     private $prets;
 
@@ -171,12 +155,12 @@ class Livre
         $this->prets = new ArrayCollection();
     }
 
-    public function getId(): ? int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIsbn(): ? string
+    public function getIsbn(): ?string
     {
         return $this->isbn;
     }
@@ -188,7 +172,7 @@ class Livre
         return $this;
     }
 
-    public function getTitre(): ? string
+    public function getTitre(): ?string
     {
         return $this->titre;
     }
@@ -200,72 +184,72 @@ class Livre
         return $this;
     }
 
-    public function getPrix(): ? float
+    public function getPrix(): ?float
     {
         return $this->prix;
     }
 
-    public function setPrix(? float $prix): self
+    public function setPrix(?float $prix): self
     {
         $this->prix = $prix;
 
         return $this;
     }
 
-    public function getGenre(): ? Genre
+    public function getGenre(): ?Genre
     {
         return $this->genre;
     }
 
-    public function setGenre(? Genre $genre): self
+    public function setGenre(?Genre $genre): self
     {
         $this->genre = $genre;
 
         return $this;
     }
 
-    public function getEditeur(): ? Editeur
+    public function getEditeur(): ?Editeur
     {
         return $this->editeur;
     }
 
-    public function setEditeur(? Editeur $editeur): self
+    public function setEditeur(?Editeur $editeur): self
     {
         $this->editeur = $editeur;
 
         return $this;
     }
 
-    public function getAuteur(): ? Auteur
+    public function getAuteur(): ?Auteur
     {
         return $this->auteur;
     }
 
-    public function setAuteur(? Auteur $auteur): self
+    public function setAuteur(?Auteur $auteur): self
     {
         $this->auteur = $auteur;
 
         return $this;
     }
 
-    public function getAnnee(): ? int
+    public function getAnnee(): ?int
     {
         return $this->annee;
     }
 
-    public function setAnnee(? int $annee): self
+    public function setAnnee(?int $annee): self
     {
         $this->annee = $annee;
 
         return $this;
     }
 
-    public function getLangue(): ? string
+    public function getLangue(): ?string
     {
         return $this->langue;
     }
 
-    public function setLangue(? string $langue): self
+    public function setLangue(?string $langue): self
     {
         $this->langue = $langue;
 
