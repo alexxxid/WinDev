@@ -8,9 +8,9 @@ use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PretRepository")
  * @ApiResource(
- *          itemOperation={
+ *          itemOperations={
  *              "get"={
- *                  "methode"="GET"
+ *                  "methode"="GET",
  *                  "path"="/prets/{id}",
  *                  "access_control"="(is_granted('ROLE_ADHERENT') and object.getAdherent() == user)or (is_granted('ROLE_MANAGER')",
  *                  "access_control"="Vous ne pouvez avoir accès qu'à vos propre prets."

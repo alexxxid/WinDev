@@ -39,14 +39,14 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *            itemOperations={
  *                "get"={
  *                  "method"="GET",
- *                  "path" ="/livre/{id}",
+ *                  "path" ="/livres/{id}",
  *                  "normalization_context"={
  *                      "groups"={"get_role_adherent"}
  *                   }
  *                 },          
  *                "put"={
  *                  "method"="PUT",
- *                  "path" ="/livre/{id}",
+ *                  "path" ="/livres/{id}",
  *                  "access_control"="is_granted('ROLE_MANAGER')",
  *                  "access_control_message"=" Vous n'avez pas les droits d'accéder à cette ressource",
  *                  "denormalization_context"= {
